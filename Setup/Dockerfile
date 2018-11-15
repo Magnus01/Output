@@ -34,20 +34,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 RUN ln -s "$(which nodejs)" /usr/local/bin/node
-#
-### Create a nonroot user, and switch to it
-##RUN /usr/sbin/useradd --create-home --home-dir /usr/local/nonroot --shell /bin/bash nonroot
-##RUN /usr/sbin/adduser nonroot sudo
-##RUN chown -R nonroot /usr/local/
-##RUN chown -R nonroot /usr/lib/
-##RUN chown -R nonroot /usr/bin/
-##
-##USER nonroot
-##
-##RUN npm cache clean
-#USER root
-#RUN npm -g config set user root
-#RUN npm -g install nodegit
 
 RUN npm config set strict-ssl false
 RUN npm install -g underscore  request express jade shelljs passport http sys jquery lodash async mocha qunit moment connect validator restify ejs ws co when helmet wrench brain mustache should backbone forever  debug && export NODE_PATH=/usr/local/lib/node_modules/
@@ -56,7 +42,7 @@ RUN apt-get install -y clojure1.4
 
 
 #prepare for Java download
-RUN apt-get install -y python-software-properties
+RUN apt-get install -y python-software-properties python-numpy python-pip python-matplotlib
 RUN apt-get install -y software-properties-common
 
 #grab oracle java (auto accept licence)
