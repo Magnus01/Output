@@ -135,7 +135,7 @@ app.post('/compile',bruteforce.prevent,function(req, res)
     );
 
 
-
+var url = "https://compilebox.net" + folder + "/myfig.png";
     //data will contain the output of the compiled/interpreted code
     //the result maybe normal program output, list of error messages or a Timeout error
     sandboxType.run(function(data,exec_time,err)
@@ -146,7 +146,7 @@ app.post('/compile',bruteforce.prevent,function(req, res)
 
         //var tmp_loc = something_from_script  (path + folder)
         //var images = recFindByExt(tmp_loc, 'jpg') //should be possible to res.send this list now.
-        res.send({folder: "hello", output:data, langid: language,code:code, unit_test:unit_test, errors:err, time:exec_time});
+        res.send({Image: url, output:data, langid: language,code:code, unit_test:unit_test, errors:err, time:exec_time});
     });
 
 });
