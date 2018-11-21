@@ -76,7 +76,7 @@ app.post('/compile',bruteforce.prevent,function(req, res)
     sandboxType.run(function(data,exec_time,err)
     {
         //console.log("Data: received: "+ data)
-    	res.send({output:data, langid: language,code:code, errors:err, time:exec_time});
+    	res.send({folder: "folderlocakation", output:data, langid: language,code:code, errors:err, time:exec_time});
     });
    
 });
