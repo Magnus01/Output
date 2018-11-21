@@ -20,7 +20,7 @@ var sandBox = require('./DockerSandbox');
 var bodyParser = require('body-parser');
 var app = express();
 var server = http.createServer(app);
-var port=3010;
+var port=3000;
 
 
 var ExpressBrute = require('express-brute');
@@ -135,7 +135,7 @@ app.post('/compile',bruteforce.prevent,function(req, res)
     );
 
 
-var url = "https://compilebox.net" + folder + "/myfig.png";
+var url = "https://compilebox.net/" + folder + "/myfig.png";
     //data will contain the output of the compiled/interpreted code
     //the result maybe normal program output, list of error messages or a Timeout error
     sandboxType.run(function(data,exec_time,err)
