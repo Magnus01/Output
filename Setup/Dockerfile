@@ -45,9 +45,15 @@ RUN apt-get install -y clojure1.4
 RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib
 RUN apt-get install -y software-properties-common
 
+#
+#RUN mkdir -p /root/.config/matplotlib
+#RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
+ENV MATPLOTLIBRC=${HOME}/.config/matplotlib/matplotlibrc
+RUN mkdir -p ${HOME}/.config/matplotlib && \
+    echo "backend      : Agg" > ${HOME}/.config/matplotlib/matplotlibrc && \
+    python -c "import matplotlib.pyplot"
 
-RUN mkdir -p /root/.config/matplotlib
-RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
+
 
 #grab oracle java (auto accept licence)
 RUN add-apt-repository -y ppa:webupd8team/java
