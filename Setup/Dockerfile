@@ -50,7 +50,7 @@ RUN apt-get install -y software-properties-common
 #RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
 
 
-
+RUN echo "backend : Agg" >> matplotlibrc
 
 #grab oracle java (auto accept licence)
 RUN add-apt-repository -y ppa:webupd8team/java
