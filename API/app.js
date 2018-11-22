@@ -75,19 +75,17 @@ app.post('/compile',bruteforce.prevent,function(req, res)
             arr.compilerArray[language][4],
             stdin);
 
-    var urltosend = "https://compilebox.net/" + folder + "/myfig.png";
-    var urllocal =  "home/ceo/.vnc/compilebox/API/" +  folder +  "/myfig.png";
-    console.log(urllocal, 'urlocal');
+    var url = "https://compilebox.net/" + folder + "/myfig.png";
     //data will contain the output of the compiled/interpreted code
     //the result maybe normal program output, list of error messages or a Timeout error
     sandboxType.run(function(data,exec_time,err)
     {
         //console.log("Data: received: "+ data)
-        if (getFilesizeInBytes(urllocal) < 12)
+        if (getFilesizeInBytes(url) < 12)
         {
-            var urltosend = '';
+            var url = '';
         }
-    	res.send({folder: urltosend, output:data, langid: language,code:code, errors:err, time:exec_time});
+    	res.send({folder: url, output:data, langid: language,code:code, errors:err, time:exec_time});
     });
 
 });
