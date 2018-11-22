@@ -42,36 +42,35 @@ RUN apt-get install -y clojure1.4
 
 
 #prepare for Java download
-RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib
-RUN apt-get install -y software-properties-common
+#RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib
+#RUN apt-get install -y software-properties-common
 
+RUN apt-get update && apt-get install -y wget ca-certificates \
+    git curl vim python3-dev python3-pip \
+    libfreetype6-dev libpng12-dev libhdf5-dev
+
+RUN pip3 install --upgrade pip
+RUN pip3 install tensorflow
+RUN pip3 install numpy pandas sklearn matplotlib seaborn jupyter pyyaml h5py
+RUN pip3 install keras --no-deps
 #
 #RUN mkdir -p /root/.config/matplotlib
 #RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
 
-RUN apt-get update \
- && apt-get install -y \
-      git \
-      unzip
 
 
 
 
 
-# フォントとして Ricty Diminished をインストールする。
-WORKDIR /usr/share/fonts
-ENV RICTY_DIMINISHED_VERSION 3.2.4
-ADD https://github.com/mzyy94/RictyDiminished-for-Powerline/archive/$RICTY_DIMINISHED_VERSION-powerline-early-2016.zip .
-RUN unzip -jo $RICTY_DIMINISHED_VERSION-powerline-early-2016.zip \
- && fc-cache -fv
-
-# Matplotlib 用の設定ファイルを用意する。
-WORKDIR /etc
-RUN echo "backend : Agg" >> matplotlibrc \
- && echo "font.family : Ricty Diminished" >> matplotlibrc
-
-
-
+#
+## フォント
+#
+## Matplotlib 用の設定ファイルを用意する。
+#WORKDIR /etc
+#RUN echo "backend : Agg" >> matplotlibrc
+#
+#
+#
 
 
 
