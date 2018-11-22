@@ -78,13 +78,10 @@ RUN apt-get install -y curl
 #RUN apt-get install -y sudo
 RUN apt-get install -y bc
 
-RUN -it \
-    --env="DISPLAY" \
-    --env="QT_X11_NO_MITSHM=1" \
-    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-    osrf/ros:indigo-desktop-full \
-    rqt
 
 
 RUN echo "mysql ALL = NOPASSWD: /usr/sbin/service mysql start" | cat >> /etc/sudoers
 
+WORKDIR /etc
+RUN echo "backend : Agg" >> matplotlibrc \
+ && echo "font.family : Ricty Diminished" >> matplotlibrc
