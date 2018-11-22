@@ -49,7 +49,10 @@ RUN apt-get install -y software-properties-common
 #RUN mkdir -p /root/.config/matplotlib
 #RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
 
-
+RUN apt-get update \
+ && apt-get install -y \
+      git \
+      unzip
 
 
 
