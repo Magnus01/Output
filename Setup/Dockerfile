@@ -48,11 +48,11 @@ RUN apt-get install -y software-properties-common
 #
 #RUN mkdir -p /root/.config/matplotlib
 #RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
-ENV MATPLOTLIBRC=${HOME}/.config/matplotlib/matplotlibrc
-RUN mkdir -p ${HOME}/.config/matplotlib && \
-    echo "backend      : Agg" > ${HOME}/.config/matplotlib/matplotlibrc && \
-    python -c "import matplotlib.pyplot"
-
+#ENV MATPLOTLIBRC=${HOME}/.config/matplotlib/matplotlibrc
+#RUN mkdir -p ${HOME}/.config/matplotlib && \
+#    echo "backend      : Agg" > ${HOME}/.config/matplotlib/matplotlibrc && \
+#    python -c "import matplotlib.pyplot"
+#
 
 
 #grab oracle java (auto accept licence)
@@ -66,17 +66,25 @@ RUN apt-get install -y gobjc
 RUN apt-get install -y gnustep-devel &&  sed -i 's/#define BASE_NATIVE_OBJC_EXCEPTIONS     1/#define BASE_NATIVE_OBJC_EXCEPTIONS     0/g' /usr/include/GNUstep/GNUstepBase/GSConfig.h
 
 
-RUN apt-get install -y scala
-RUN apt-get install -y mysql-server
-RUN apt-get install -y perl
+#RUN apt-get install -y scala
+#RUN apt-get install -y mysql-server
+#RUN apt-get install -y perl
 
 RUN apt-get install -y curl
-RUN mkdir -p /opt/rust && \
-    curl https://sh.rustup.rs -sSf | HOME=/opt/rust sh -s -- --no-modify-path -y && \
-    chmod -R 777 /opt/rust
+#RUN mkdir -p /opt/rust && \
+#    curl https://sh.rustup.rs -sSf | HOME=/opt/rust sh -s -- --no-modify-path -y && \
+#    chmod -R 777 /opt/rust
 
 #RUN apt-get install -y sudo
 RUN apt-get install -y bc
+
+RUN -it \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    osrf/ros:indigo-desktop-full \
+    rqt
+
 
 RUN echo "mysql ALL = NOPASSWD: /usr/sbin/service mysql start" | cat >> /etc/sudoers
 
