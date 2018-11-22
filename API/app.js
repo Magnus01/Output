@@ -16,7 +16,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var server = http.createServer(app);
 var port=8080;
-
+var fs = require('fs');
 
 var ExpressBrute = require('express-brute');
 var store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
