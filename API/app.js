@@ -42,6 +42,11 @@ function random(size) {
     return require("crypto").randomBytes(size).toString('hex');
 }
 
+function getFilesizeInBytes(filename) {
+    var stats = fs.statSync(filename)
+    var fileSizeInBytes = stats["size"]
+    return fileSizeInBytes
+}
 
 app.post('/compile',bruteforce.prevent,function(req, res)
 {
@@ -76,6 +81,10 @@ app.post('/compile',bruteforce.prevent,function(req, res)
     sandboxType.run(function(data,exec_time,err)
     {
         //console.log("Data: received: "+ data)
+        if (getFilesizeInBytes(url) < 12)
+        {
+            var url = '';
+        }
     	res.send({folder: url, output:data, langid: language,code:code, errors:err, time:exec_time});
     });
 
