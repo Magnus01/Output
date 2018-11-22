@@ -82,7 +82,7 @@ DockerSandbox.prototype.prepare = function(success)
             {
                 console.log(sandbox.langName+" file was saved!");
                 exec("chmod 777 \'"+sandbox.path+sandbox.folder+"/"+sandbox.file_name+"\'")
-                exec("export MPLBACKEND=agg");
+                exec("export MPLBACKEND=\"agg\"");
                 fs.writeFile(sandbox.path + sandbox.folder+"/inputFile", sandbox.stdin_data,function(err)
                 {
                     if (err)
@@ -135,7 +135,7 @@ DockerSandbox.prototype.execute = function(success)
 
     //log the statement in console
     console.log(st);
-
+    exec("export MPLBACKEND=\"agg\"");
     //execute the Docker, This is done ASYNCHRONOUSLY
     exec(st);
     console.log("------------------------------")
