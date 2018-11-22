@@ -44,7 +44,8 @@ RUN apt-get install -y clojure1.4
 #prepare for Java download
 RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib
 RUN apt-get install -y software-properties-common
-
+RUN echo "backend : Agg" >> matplotlibrc \
+ && echo "font.family : Ricty Diminished" >> matplotlibrc
 #
 #RUN mkdir -p /root/.config/matplotlib
 #RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
@@ -82,5 +83,3 @@ RUN apt-get install -y bc
 
 RUN echo "mysql ALL = NOPASSWD: /usr/sbin/service mysql start" | cat >> /etc/sudoers
 
-RUN echo "backend : Agg" >> matplotlibrc \
- && echo "font.family : Ricty Diminished" >> matplotlibrc
