@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+export MPLBACKEND="agg"
 
 to=$1
 shift

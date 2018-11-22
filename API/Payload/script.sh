@@ -41,7 +41,6 @@ addtionalArg=$4
 exec  1> $"/usercode/logfile.txt"
 exec  2> $"/usercode/errors"
 #3>&1 4>&2 >
-export MPLBACKEND="agg"
 
 START=$(date +%s.%2N)
 #Branch 1
