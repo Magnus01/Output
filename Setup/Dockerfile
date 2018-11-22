@@ -82,6 +82,5 @@ RUN apt-get install -y bc
 
 RUN echo "mysql ALL = NOPASSWD: /usr/sbin/service mysql start" | cat >> /etc/sudoers
 
-WORKDIR /etc
 RUN echo "backend : Agg" >> matplotlibrc \
  && echo "font.family : Ricty Diminished" >> matplotlibrc
