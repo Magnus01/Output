@@ -82,7 +82,7 @@ DockerSandbox.prototype.prepare = function(success)
             {
                 console.log(sandbox.langName+" file was saved!");
                 exec("chmod 777 \'"+sandbox.path+sandbox.folder+"/"+sandbox.file_name+"\'")
-                exec("export MPLBACKEND=Agg");
+                exec("export MPLBACKEND=agg");
                 fs.writeFile(sandbox.path + sandbox.folder+"/inputFile", sandbox.stdin_data,function(err)
                 {
                     if (err)

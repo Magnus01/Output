@@ -44,7 +44,7 @@ RUN apt-get install -y clojure1.4
 #prepare for Java download
 RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib
 RUN apt-get install -y software-properties-common
-RUN export MPLBACKEND=Agg
+RUN export MPLBACKEND='agg'
 #grab oracle java (auto accept licence)
 RUN add-apt-repository -y ppa:webupd8team/java
 RUN apt-get update
