@@ -76,12 +76,14 @@ app.post('/compile',bruteforce.prevent,function(req, res)
             stdin);
 
     var url = "https://compilebox.net/" + folder + "/myfig.png";
+    var urllocal =  this.path + this.folder + '":/usercode ' + "/myfig.png";
+    console.log(urllocal, 'urlocal');
     //data will contain the output of the compiled/interpreted code
     //the result maybe normal program output, list of error messages or a Timeout error
     sandboxType.run(function(data,exec_time,err)
     {
         //console.log("Data: received: "+ data)
-        if (getFilesizeInBytes(url) < 12)
+        if (getFilesizeInBytes(urllocal) < 12)
         {
             var url = '';
         }
