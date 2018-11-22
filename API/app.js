@@ -16,7 +16,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var server = http.createServer(app);
 var port=8080;
-var fs = require('fs');
+
 
 var ExpressBrute = require('express-brute');
 var store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
@@ -81,10 +81,7 @@ app.post('/compile',bruteforce.prevent,function(req, res)
     sandboxType.run(function(data,exec_time,err)
     {
         //console.log("Data: received: "+ data)
-        if (getFilesizeInBytes(url) < 12)
-        {
-            var url = '';
-        }
+
     	res.send({folder: url, output:data, langid: language,code:code, errors:err, time:exec_time});
     });
 
