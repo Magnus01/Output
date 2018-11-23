@@ -36,15 +36,19 @@ RUN apt-get install build-essential libssl-dev -y
 
 
 #RUN apt-get install curl python-software-properties -y
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-RUN apt-get install -y nodejs
+#HERE ARE THE JAVASCRIPT INSTALLATION FILES
+#RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#RUN apt-get install -y nodejs
+#
+#RUN ln -s "$(which nodejs)" /usr/local/bin/node
+#
+#RUN npm config set strict-ssl false
+#RUN npm install -g underscore  request express jade shelljs passport http sys jquery lodash async mocha qunit moment connect validator restify ejs ws co when helmet wrench brain mustache should backbone forever  debug && export NODE_PATH=/usr/local/lib/node_modules/
 
-RUN ln -s "$(which nodejs)" /usr/local/bin/node
 
-RUN npm config set strict-ssl false
-RUN npm install -g underscore  request express jade shelljs passport http sys jquery lodash async mocha qunit moment connect validator restify ejs ws co when helmet wrench brain mustache should backbone forever  debug && export NODE_PATH=/usr/local/lib/node_modules/
 
-#RUN apt-get install -y clojure1.4
+
+
 
 
 
