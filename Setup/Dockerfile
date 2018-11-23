@@ -117,8 +117,9 @@ RUN apt-get install -y python-numpy
 RUN apt-get install -y python3-dev
 RUN apt-get install -y python3-tk
 RUN apt-get install -y python3-numpy
-RUN apt-get install -y ant
-RUN apt-get install -y default-jdk
+#RUN apt-get install -y ant
+#this build is unstable
+#RUN apt-get install -y default-jdk
 RUN apt-get install -y doxygen
 RUN apt-get install -y apt-get clean
 RUN apt-get install -y apt-get autoremove
