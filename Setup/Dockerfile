@@ -25,7 +25,7 @@ RUN apt-get upgrade
 
 RUN apt-get install curl -y
 RUN apt-get install -y sudo -y
-#RUN apt-get install build-essential libssl-dev -y
+RUN apt-get install build-essential libssl-dev -y
 
 #RUN apt-get install -y npm
 #RUN apt-get install -y golang-go
