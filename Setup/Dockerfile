@@ -70,10 +70,10 @@ RUN apt-get install -y git
 RUN apt-get install -y libffi-dev
 RUN apt-get install -y libfreetype6-dev 
 RUN apt-get install -y libhdf5-dev
-RUN apt-get install -y  libjpeg-dev
+RUN apt-get install -y libjpeg-dev
 #RUN apt-get install -y software-properties-common
 
-RUN apt-get install -ylibpng12-dev 
+RUN apt-get install -y libpng12-dev
 RUN apt-get install -y libssl-dev 
 RUN apt-get install -y ibtiff5-dev
 RUN apt-get install -y libwebp-dev
@@ -120,7 +120,6 @@ RUN apt-get install -y python3-numpy
 RUN apt-get install -y ant
 RUN apt-get install -y default-jdk
 RUN apt-get install -y doxygen
-RUN apt-get install -y
 RUN apt-get install -y apt-get clean
 RUN apt-get install -y apt-get autoremove
 RUN apt-get install -y rm -rf /var/lib/apt/lists/*
