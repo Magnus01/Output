@@ -49,7 +49,7 @@ RUN apt-get install -y software-properties-common
 
 #THIS MIGHT WORK
 #RUN mkdir -p /root/.config/matplotlib
-#RUN echo "backend : Agg" > /etc/matplotlibrc
+RUN echo "backend : Agg" > /etc/matplotlibrc
 
 
 
