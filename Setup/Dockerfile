@@ -3,7 +3,9 @@
 # Based on Ubuntu
 ############################################################
 
-FROM chug/ubuntu14.04x64 
+#FROM chug/ubuntu14.04x64
+FROM ubuntu:16.04
+
 MAINTAINER ASAD MEMON, OSMAN ALI
 
 # Update the repository sources list
@@ -47,19 +49,6 @@ RUN apt-get install -y clojure1.4
 #
 
 
-# Install Keras
-#
-#
-##
-###
-##
-#
-#
-##
-#
-#
-#
-# Install some dependencies
 ARG THEANO_VERSION=rel-0.8.2
 ARG TENSORFLOW_VERSION=0.12.1
 ARG TENSORFLOW_ARCH=cpu
@@ -68,8 +57,8 @@ ARG LASAGNE_VERSION=v0.1
 ARG TORCH_VERSION=latest
 ARG CAFFE_VERSION=master
 
-# Install some dependencies
-RUN apt-get update && apt-get install -y \
+# Install some dependencies -- leaving them untouched
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 		bc \
 		build-essential \
 		cmake \
@@ -84,7 +73,7 @@ RUN apt-get update && apt-get install -y \
 		liblcms2-dev \
 		libopenblas-dev \
 		liblapack-dev \
-		libopenjpeg2 \
+		libopenjpeg5 \
 		libpng12-dev \
 		libssl-dev \
 		libtiff5-dev \
@@ -92,7 +81,6 @@ RUN apt-get update && apt-get install -y \
 		libzmq3-dev \
 		nano \
 		pkg-config \
-		python-dev \
 		software-properties-common \
 		unzip \
 		vim \
@@ -123,12 +111,12 @@ RUN apt-get update && apt-get install -y \
 		libxine2-dev \
 		libtbb-dev \
 		libeigen3-dev \
-		python-dev \
-		python-tk \
-		python-numpy \
+                python3 \
 		python3-dev \
 		python3-tk \
-		python3-numpy \
+		python3-pip   \
+		openmpi-bin	\
+        swig \
 		ant \
 		default-jdk \
 		doxygen \
@@ -139,60 +127,93 @@ RUN apt-get update && apt-get install -y \
 # Link BLAS library to use OpenBLAS using the alternatives mechanism (https://www.scipy.org/scipylib/building/linux.html#debian-ubuntu)
 	update-alternatives --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3
 
-# Install pip
-RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
-	python get-pip.py && \
-	rm get-pip.py
+# Install pip to get the latest version
+#RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
+#	python3 get-pip.py && \
+#	rm get-pip.py
+#
+# Install Keras
+RUN pip3 --no-cache-dir install git+git://github.com/fchollet/keras.git@${KERAS_VERSION}
 
-# Add SNI support to Python
-RUN pip --no-cache-dir install \
-		pyopenssl \
-		ndg-httpsclient \
-		pyasn1
+# upgrade pip
+RUN pip3 --no-cache-dir install -U pip
+COPY requirements.txt /requirements.txt
+RUN pip3 --no-cache-dir install -r /requirements.txt
+
+
+
+# Add SNI support to Python --not really needed for modern Pythons
+#RUN pip3 --no-cache-dir install \
+#		pyopenssl \
+#		ndg-httpsclient \
+#		pyasn1
 
 # Install useful Python packages using apt-get to avoid version incompatibilities with Tensorflow binary
 # especially numpy, scipy, skimage and sklearn (see https://github.com/tensorflow/tensorflow/issues/2034)
+#RUN apt-get update && apt-get install -y \
+#		python3-numpy \
+#		python3-scipy \
+#		python3-nose \
+#		python3-h5py \
+#		python3-skimage \
+#		python3-matplotlib \
+#		python3-pandas \
+#		python3-sklearn \
+#		python3-sympy \
+#		&& \
+#	apt-get clean && \
+#	apt-get autoremove && \
+#	rm -rf /var/lib/apt/lists/*
+
+# Install other useful Python packages using pip
+#RUN pip3 --no-cache-dir install --upgrade ipython && \
+#	pip --no-cache-dir install \
+#		Cython \
+#		ipykernel \
+#		jupyter \
+#		path.py \
+#		Pillow \
+#		pygments \
+#		six \
+#		sphinx \
+#		wheel \
+#		zmq \
+#		&& \
+#	python -m ipykernel.kernelspec
+
+
+# Install TensorFlow
+#RUN pip3 --no-cache-dir install \
+#	https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_ARCH}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
+
+
+# Install dependencies for Caffe
 RUN apt-get update && apt-get install -y \
-		python-numpy \
-		python-scipy \
-		python-nose \
-		python-h5py \
-		python-skimage \
-		python-matplotlib \
-		python-pandas \
-		python-sklearn \
-		python-sympy \
+		libboost-all-dev \
+		libgflags-dev \
+		libgoogle-glog-dev \
+		libhdf5-serial-dev \
+		libleveldb-dev \
+		liblmdb-dev \
+		libopencv-dev \
+		libprotobuf-dev \
+		libsnappy-dev \
+		protobuf-compiler \
 		&& \
 	apt-get clean && \
 	apt-get autoremove && \
 	rm -rf /var/lib/apt/lists/*
 
-# Install other useful Python packages using pip
-RUN pip --no-cache-dir install --upgrade ipython && \
-	pip --no-cache-dir install \
-		Cython \
-		ipykernel \
-		jupyter \
-		path.py \
-		Pillow \
-		pygments \
-		six \
-		sphinx \
-		wheel \
-		zmq \
-		&& \
-	python -m ipykernel.kernelspec
 
+# Set up notebook config
+COPY jupyter_notebook_config.py /root/.jupyter/
 
-# Install TensorFlow
-RUN pip --no-cache-dir install \
-	https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_ARCH}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
+# Jupyter has issues with being run directly: https://github.com/ipython/ipython/issues/7062
+COPY run_jupyter.sh /root/
+COPY versions.py /versions.py
 
-
-# Install Keras
-RUN pip --no-cache-dir install git+git://github.com/fchollet/keras.git@${KERAS_VERSION}
-
-
+# ATTENTION: after that apt may stop working so it should be kept at the bottom of Dockerfile
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.5 1
 
 
 
