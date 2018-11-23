@@ -10,7 +10,9 @@ FROM ubuntu:16.04
 # Update the repository sources list
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get upgrade
+
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+
 #Install all the languages/compilers we are supporting.
 #
 RUN apt-get install -y gcc
