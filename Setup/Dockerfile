@@ -19,9 +19,9 @@ RUN apt-get update
 #RUN apt-get install -y python
 
 
-RUN apt-get install -y mono-xsp2 mono-xsp2-base
+#RUN apt-get install -y mono-xsp2 mono-xsp2-base
 
-RUN apt-get install -y mono-vbnc
+#RUN apt-get install -y mono-vbnc
 
 RUN apt-get install curl -y
 RUN apt-get install -y sudo -y
