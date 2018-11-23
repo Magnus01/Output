@@ -12,7 +12,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/
 RUN apt-get update
 #RUN apt-get upgrade
 #Install all the languages/compilers we are supporting.
-#RUN apt-get install -y gcc
+RUN apt-get install -y gcc
 RUN apt-get install -y g++
 #RUN apt-get install -y php5-cli
 #RUN apt-get install -y ruby
