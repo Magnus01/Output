@@ -11,11 +11,11 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/
 RUN apt-get update
 #RUN apt-get upgrade
 #Install all the languages/compilers we are supporting.
-RUN apt-get install -y gcc
+#RUN apt-get install -y gcc
 RUN apt-get install -y g++
-RUN apt-get install -y php5-cli
-RUN apt-get install -y ruby
-RUN apt-get install -y python
+#RUN apt-get install -y php5-cli
+#RUN apt-get install -y ruby
+#RUN apt-get install -y python
 RUN apt-get install -y mono-xsp2 mono-xsp2-base
 
 RUN apt-get install -y mono-vbnc
@@ -29,7 +29,7 @@ RUN apt-get install -y golang-go
 
 
 
-RUN apt-get install curl python-software-properties -y
+#RUN apt-get install curl python-software-properties -y
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
@@ -59,6 +59,15 @@ RUN apt-get install -y clojure1.4
 #
 #
 #
+# Install some dependencies
+ARG THEANO_VERSION=rel-0.8.2
+ARG TENSORFLOW_VERSION=0.12.1
+ARG TENSORFLOW_ARCH=cpu
+ARG KERAS_VERSION=1.2.0
+ARG LASAGNE_VERSION=v0.1
+ARG TORCH_VERSION=latest
+ARG CAFFE_VERSION=master
+
 # Install some dependencies
 RUN apt-get update && apt-get install -y \
 		bc \
@@ -178,6 +187,9 @@ RUN pip --no-cache-dir install --upgrade ipython && \
 # Install TensorFlow
 RUN pip --no-cache-dir install \
 	https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_ARCH}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
+
+
+# Install Keras
 RUN pip --no-cache-dir install git+git://github.com/fchollet/keras.git@${KERAS_VERSION}
 
 
