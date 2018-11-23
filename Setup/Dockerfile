@@ -4,7 +4,7 @@
 ############################################################
 
 #FROM chug/ubuntu14.04x64
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 
 # Update the repository sources list
