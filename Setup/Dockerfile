@@ -75,7 +75,7 @@ RUN apt-get install -y libjpeg-dev
 
 RUN apt-get install -y libpng12-dev
 RUN apt-get install -y libssl-dev 
-RUN apt-get install -y ibtiff5-dev
+RUN apt-get install -y libtiff5-dev
 RUN apt-get install -y libwebp-dev
 RUN apt-get install -y libzmq3-dev
 RUN apt-get install -y nano
@@ -92,7 +92,7 @@ RUN apt-get install -y zlib1g-dev
 RUN apt-get install -y libjpeg-dev
 RUN apt-get install -y libwebp-dev
 RUN apt-get install -y libpng-dev
-RUN apt-get install -y libtiff5-dev
+
 RUN apt-get install -y libjasper-dev
 RUN apt-get install -y libopenexr-dev
 RUN apt-get install -y libgdal-dev
