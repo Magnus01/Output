@@ -28,7 +28,7 @@ DE_PATH=/usr/local/lib/node_modules/
 RUN apt-get install -y clojure1.4
 
 #prepare for Java download
-RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib python-pandas python-statsmodels python-seaborn
+RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib python-pandas python-scipy python-statsmodels python-seaborn
 
 RUN apt-get install -y software-properties-common
 #THIS MIGHT WORK
