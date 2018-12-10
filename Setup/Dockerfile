@@ -141,5 +141,5 @@ RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/mu
 RUN apt-get update
 
 # Define the command that will be exectuted when docker runs the container.
-WORKDIR /home
-ENTRYPOINT /bin/bash
+#WORKDIR /home
+#ENTRYPOINT /bin/bash
