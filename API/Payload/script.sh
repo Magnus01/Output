@@ -66,10 +66,11 @@ fi
 #head -100 /usercode/logfile.txt
 #touch /usercode/completed
 END=$(date +%s.%2N)
-runtime=$(echo "$END - $START" | bc)
+#runtime=$(echo "$END - $START" | bc)
 
 
-echo "*-COMPILEBOX::ENDOFOUTPUT-*" $runtime 
+#echo "*-COMPILEBOX::ENDOFOUTPUT-*" $runtime
+
 
 
 mv /usercode/logfile.txt /usercode/completed
