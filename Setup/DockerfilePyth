@@ -2,14 +2,14 @@
 # Purpose   : Dockerize Components of a simple data science stack (CPU version).
 # Python    : 2.7
 # Version   : 0.1
-# Author    : Rob Lyon (robert.lyon@manchester.ac.uk)
+# Author    : Magnus Lysfjord
 ##############################################################################################
 #
 # This docker file will setup an environment with only a basic data science stack.
 # This is used for some music related machine learning work. It inlcudes a full python,
 # install, along with the scipy stack and tensor flow (CPU version).
 #
-# See the container maintained by Kamil Kwiek <kamil.kwiek@continuum.io>, from which I
+# See the container maintained by Rob Lyon (robert.lyon@manchester.ac.uk), from which I
 # created this dockerfile:
 #
 # https://github.com/ContinuumIO/docker-images/blob/master/anaconda/Dockerfile
@@ -91,6 +91,7 @@ RUN conda install -y \
     mkl \
     theano \
     pygpu \
+    seaborn \
     opencv
 
 # Music tools
@@ -141,5 +142,5 @@ RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/mu
 RUN apt-get update
 
 # Define the command that will be exectuted when docker runs the container.
-WORKDIR /home
-ENTRYPOINT /bin/bash
+#WORKDIR /home
+#ENTRYPOINT /bin/bash

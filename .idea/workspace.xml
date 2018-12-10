@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Setup/DockerfilePyth" line="124" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b13db85b-8272-4e13-85b1-12dc9ee098c2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Setup/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Setup/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Setup/DockerfileReactJS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Payload/script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/API/Payload/script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Setup/DockerfilePython" beforeDir="false" afterPath="$PROJECT_DIR$/Setup/DockerfilePyth" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +18,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/API/Payload/script.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="60" column="51" lean-forward="true" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+              <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -28,34 +43,43 @@
         <entry file="file://$PROJECT_DIR$/Setup/UpdateDocker.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Setup/VRUpdateDocker.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+            <state relative-caret-position="153">
+              <caret line="9" column="15" selection-end-line="145" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Setup/ReactJSUpdateDocker.sh">
+        <entry file="file://$PROJECT_DIR$/Setup/DockerfilePyth">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+            <state relative-caret-position="338">
+              <caret line="133" column="33" selection-start-line="133" selection-start-column="33" selection-end-line="133" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Setup/DockerfileReactJS">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Setup/DockerfileReact">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="42" column="19" lean-forward="true" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -64,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/Setup/updatescriptrunner.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -73,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/Setup/Install_14.04.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -86,24 +110,6 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Setup/DockerfileVR">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1668">
-              <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/compilers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -160,7 +166,6 @@
         <option value="$PROJECT_DIR$/API/node_modules/testforQ.js" />
         <option value="$PROJECT_DIR$/API/testforQ.js" />
         <option value="C:/compilebox/API/testforQ.js" />
-        <option value="$PROJECT_DIR$/API/Payload/script.sh" />
         <option value="$PROJECT_DIR$/API/compilers.js" />
         <option value="$PROJECT_DIR$/Setup/updatescriptrunner.sh" />
         <option value="$PROJECT_DIR$/Setup/UpdateDocker.sh" />
@@ -173,6 +178,10 @@
         <option value="$PROJECT_DIR$/API/Payload/sql_runner.sh" />
         <option value="$PROJECT_DIR$/API/DockerSandbox.js" />
         <option value="$PROJECT_DIR$/Setup/Dockerfile" />
+        <option value="$PROJECT_DIR$/Setup/DockerfilePython" />
+        <option value="$PROJECT_DIR$/Setup/DockerfilePyth" />
+        <option value="$PROJECT_DIR$/Setup/DockerfileReactJS" />
+        <option value="$PROJECT_DIR$/API/Payload/script.sh" />
       </list>
     </option>
   </component>
@@ -198,6 +207,12 @@
               <item name="Output" type="b2602c69:ProjectViewProjectNode" />
               <item name="Output" type="462c0819:PsiDirectoryNode" />
               <item name="API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Output" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Output" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="Payload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Output" type="b2602c69:ProjectViewProjectNode" />
@@ -258,23 +273,23 @@
       <workItem from="1541075949053" duration="647000" />
       <workItem from="1541230499889" duration="637000" />
       <workItem from="1542311578909" duration="5222000" />
-      <workItem from="1544452362318" duration="8262000" />
+      <workItem from="1544452362318" duration="9391000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37377000" />
+    <option name="totallyTimeSpent" value="38506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.13059701" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13059701" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.3488624" />
+      <window_info anchor="bottom" id="Terminal" order="2" visible="true" weight="0.3488624" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info anchor="bottom" id="Message" order="5" />
@@ -303,13 +318,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/jquerytest.js" />
     <entry file="file://C:/compilebox/API/testforQ.js" />
-    <entry file="file://$PROJECT_DIR$/API/Payload/script.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -334,9 +342,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Setup/DockerfilePython">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Setup/Dockerfilebackup">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
@@ -355,13 +360,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Setup/DockerfileReact">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="53" column="34" selection-start-line="53" selection-end-line="54" />
         </state>
       </provider>
     </entry>
@@ -396,7 +394,7 @@
     <entry file="file://$PROJECT_DIR$/Setup/DockerfileVR">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1668">
-          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -413,7 +411,7 @@
     <entry file="file://$PROJECT_DIR$/API/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="60" column="51" lean-forward="true" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -423,28 +421,63 @@
     <entry file="file://$PROJECT_DIR$/Setup/Install_14.04.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Setup/updatescriptrunner.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Setup/UpdateDocker.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+        <state relative-caret-position="153">
+          <caret line="9" column="15" selection-end-line="145" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Setup/DockerfilePyth">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="17" lean-forward="true" selection-end-line="145" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Setup/DockerfilePyth">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="133" column="33" selection-start-line="133" selection-start-column="33" selection-end-line="133" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Setup/DockerfileReact">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="19" lean-forward="true" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Setup/DockerfileReactJS">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/Payload/script.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
         </state>
       </provider>
     </entry>
