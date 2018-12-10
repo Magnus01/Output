@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b13db85b-8272-4e13-85b1-12dc9ee098c2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Setup/DockerfileVirtualReality" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Setup/DockerfilePyth" beforeDir="false" afterPath="$PROJECT_DIR$/Setup/DockerfilePyth" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,20 +45,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="15" selection-end-line="145" selection-end-column="21" />
+            <state relative-caret-position="341">
+              <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Setup/DockerfilePyth">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="134" column="44" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="44" />
+              <caret line="134" selection-start-line="134" selection-end-line="134" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -169,11 +167,11 @@
         <option value="$PROJECT_DIR$/API/app.js" />
         <option value="$PROJECT_DIR$/API/Payload/sql_runner.sh" />
         <option value="$PROJECT_DIR$/API/DockerSandbox.js" />
-        <option value="$PROJECT_DIR$/Setup/Dockerfile" />
         <option value="$PROJECT_DIR$/Setup/DockerfilePython" />
         <option value="$PROJECT_DIR$/Setup/DockerfileReactJS" />
         <option value="$PROJECT_DIR$/API/Payload/script.sh" />
         <option value="$PROJECT_DIR$/Setup/DockerfilePyth" />
+        <option value="$PROJECT_DIR$/Setup/Dockerfile" />
       </list>
     </option>
   </component>
@@ -259,12 +257,12 @@
       <workItem from="1541075949053" duration="647000" />
       <workItem from="1541230499889" duration="637000" />
       <workItem from="1542311578909" duration="5222000" />
-      <workItem from="1544452362318" duration="10717000" />
+      <workItem from="1544452362318" duration="10865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39832000" />
+    <option name="totallyTimeSpent" value="39980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -425,13 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="15" selection-end-line="145" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Setup/DockerfilePyth">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -466,7 +457,14 @@
     <entry file="file://$PROJECT_DIR$/Setup/DockerfilePyth">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="134" column="44" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="44" />
+          <caret line="134" selection-start-line="134" selection-end-line="134" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
         </state>
       </provider>
     </entry>

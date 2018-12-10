@@ -137,7 +137,7 @@ RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/mu
 #####################################################################
 # Finally...
 #####################################################################
-
+RUN echo "backend : Agg" > /etc/matplotlibrc
 # Ensure the OS is updated.
 RUN apt-get update
 
