@@ -1,55 +1,145 @@
-FROM chug/ubuntu14.04x64
-MAINTAINER ASAD MEMON, OSMAN ALI
-# Update the repository sources list
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
-RUN apt-get update
-#RUN apt-get upgrade
-#Install all the languages/compilers we are supporting.
-RUN apt-get install -y gcc
-RUN apt-get install -y g++
-RUN apt-get install -y php5-cli
-RUN apt-get install -y ruby
-RUN apt-get install -y python
-RUN apt-get install -y mono-xsp2 mono-xsp2-base
-RUN apt-get install -y mono-vbnc
-RUN apt-get install curl -y
-RUN apt-get install -y sudo -y
-#RUN apt-get install build-essential libssl-dev -y
-#RUN apt-get install -y npm
-RUN apt-get install -y golang-go
-RUN apt-get install curl python-software-properties -y
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-RUN apt-get install -y nodejs
-RUN ln -s "$(which nodejs)" /usr/local/bin/node
-RUN npm config set strict-ssl false
-RUN npm install -g underscore  request express jade shelljs passport http sys jquery lodash async mocha qunit momen
-t connect validator restify ejs ws co when helmet wrench brain mustache should backbone forever  debug && export NO
-DE_PATH=/usr/local/lib/node_modules/
-RUN apt-get install -y clojure1.4
+##############################################################################################
+# Purpose   : Dockerize Components of a simple data science stack (CPU version).
+# Python    : 2.7
+# Version   : 0.1
+# Author    : Rob Lyon (robert.lyon@manchester.ac.uk)
+##############################################################################################
+#
+# This docker file will setup an environment with only a basic data science stack.
+# This is used for some music related machine learning work. It inlcudes a full python,
+# install, along with the scipy stack and tensor flow (CPU version).
+#
+# See the container maintained by Kamil Kwiek <kamil.kwiek@continuum.io>, from which I
+# created this dockerfile:
+#
+# https://github.com/ContinuumIO/docker-images/blob/master/anaconda/Dockerfile
+##############################################################################################
 
-#prepare for Java download
-RUN apt-get install -y python-software-properties python-dev python-numpy python-pip python-matplotlib python-pandas python-scipy python-statsmodels python-seaborn
+# Use well supported Ubuntu distribution.
+FROM ubuntu:16.04
 
-RUN apt-get install -y software-properties-common
-#THIS MIGHT WORK
-#RUN mkdir -p /root/.config/matplotlib
-RUN echo "backend : Agg" > /etc/matplotlibrc
-#grab oracle java (auto accept licence)
-RUN add-apt-repository -y ppa:webupd8team/java
+# Contact me for help!
+MAINTAINER robert.lyon@manchester.ac.uk
+
+# The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT,
+# COPY and ADD instructions that follow it in the Dockerfile. If the WORKDIR doesn’t
+# exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
+WORKDIR /home
+
+#####################################################################
+# Make required directories
+#####################################################################
+
+# Now create some diectories to store files and scripts
+RUN mkdir soft
+RUN mkdir soft/samples
+RUN mkdir soft/samples/libROSA
+RUN mkdir soft/samples/TensorFlow
+RUN mkdir workspace
+
+#####################################################################
+# Install System tools needed
+#####################################################################
+
+RUN apt-get update \
+  && apt-get install -y build-essential \
+  wget \
+  unzip \
+  bzip2 \
+  software-properties-common \
+  python-setuptools
+
+# Music libraries
+RUN apt-get install -y libasound-dev \
+   portaudio19-dev \
+   libportaudio2 \
+   libportaudiocpp0 \
+   ffmpeg \
+   libav-tools \
+   libavcodec-extra
+
+#####################################################################
+# Install Anaconda (python 2.7 version)
+#####################################################################
+
+# Change to the soft (aka software directory).
+WORKDIR /home/soft
+
+# Now install Anaconda to manage the python environment. This installs numpy, scipy, matplotlib,
+# jupyter etc. Type conda list inside the built docker container, to view the python modules already
+# installed.
+RUN wget https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh
+RUN bash Anaconda2-4.2.0-Linux-x86_64.sh -b -p /home/soft/anaconda
+RUN rm Anaconda2-4.2.0-Linux-x86_64.sh
+ENV PATH /home/soft/anaconda/bin:$PATH
+
+#####################################################################
+# Update Anaconda (extra data science tools)
+#####################################################################
+
+# Python packages from conda. Here libgcc is needed to run XGBoost,
+# whilst GCC is needed for neural network based tools.
+RUN conda install -y \
+    gcc \
+    libgcc \
+    ephem \
+    astropy \
+    pip \
+    pandas \
+    pillow \
+    numba \
+    mkl \
+    theano \
+    pygpu \
+    opencv
+
+# Music tools
+RUN conda config --append channels conda-forge
+RUN conda config --append channels mutirri
+RUN conda config --append channels auto
+
+RUN conda install -c conda-forge ffmpeg
+RUN conda install -c auto pydub=0.9.0
+RUN conda install -c conda-forge librosa
+RUN conda install -c mutirri pyaudio=0.2.7
+
+# Some machine learning tools
+RUN conda update scikit-learn
+RUN conda update conda
+
+RUN pip install xgboost
+
+#####################################################################
+# Install CPU version of Tensor Flow
+#####################################################################
+
+# Install TensorFlow CPU version from central repo. Python 2.7 version
+RUN pip --no-cache-dir install \
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.1.0-cp27-none-linux_x86_64.whl
+
+# TensorBoard
+EXPOSE 6006
+# IPython
+EXPOSE 8888
+
+# Get samples
+WORKDIR /home/workspace/samples/libROSA
+RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/libROSA/sample.m4a
+RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/libROSA/LibROSA_Demo.ipynb
+
+WORKDIR /home/workspace/samples/TensorFlow
+RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/1_hello_tensorflow.ipynb
+RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/2_hello_tensorflow.ipynb
+RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/3_hello_tensorflow.ipynb
+
+
+#####################################################################
+# Finally...
+#####################################################################
+
+# Ensure the OS is updated.
 RUN apt-get update
-RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN apt-get install -y oracle-java8-installer
-RUN apt-get install -y gobjc
-RUN apt-get install -y gnustep-devel &&  sed -i 's/#define BASE_NATIVE_OBJC_EXCEPTIONS     1/#define BASE_NATIVE_OB
-JC_EXCEPTIONS     0/g' /usr/include/GNUstep/GNUstepBase/GSConfig.h
-RUN apt-get install -y scala
-RUN apt-get install -y mysql-server
-RUN apt-get install -y perl
-RUN apt-get install -y curl
-#RUN mkdir -p /opt/rust && \
-#    curl https://sh.rustup.rs -sSf | HOME=/opt/rust sh -s -- --no-modify-path -y && \
-#    chmod -R 777 /opt/rust
-#RUN apt-get install -y sudo
-RUN apt-get install -y bc
-RUN echo "mysql ALL = NOPASSWD: /usr/sbin/service mysql start" | cat >> /etc/sudoers
-ceo@instance-1:~/.vnc/compilebox/Setup$
+
+# Define the command that will be exectuted when docker runs the container.
+WORKDIR /home
+ENTRYPOINT /bin/bash
