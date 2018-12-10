@@ -132,7 +132,7 @@ WORKDIR /home/workspace/samples/TensorFlow
 RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/1_hello_tensorflow.ipynb
 RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/2_hello_tensorflow.ipynb
 RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/3_hello_tensorflow.ipynb
-
+RUN echo "backend : Agg" > /etc/matplotlibrc
 
 #####################################################################
 # Finally...
