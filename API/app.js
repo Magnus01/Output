@@ -18,12 +18,7 @@ var server = http.createServer(app);
 var port=8080;
 
 
-var ExpressBrute = require('express-brute');
-var store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
-var bruteforce = new ExpressBrute(store,{
-    freeRetries: 50,
-    lifetime: 3600
-});
+
 
 app.use(express.static(__dirname));
 app.use(bodyParser());
@@ -48,7 +43,7 @@ function getFilesizeInBytes(filename) {
     return fileSizeInBytes
 }
 
-app.post('/compile',bruteforce.prevent,function(req, res)
+app.post('/compile',function(req, res)
 {
 
     var language = req.body.language;
@@ -57,7 +52,12 @@ app.post('/compile',bruteforce.prevent,function(req, res)
 
     var folder= 'temp/' + random(10); //folder in which the temporary folder will be saved
     var path=__dirname+"/"; //current working path
-    var vm_name='virtual_machine'; //name of virtual machine that we want to execute
+    var vm_name='virtual_machine'; // vm_name: The TAG of the Docker VM that we wish to execute
+    //we need a python Scientifc library tag
+    //we need a react js tag
+    //we need a virtual reality tag
+    //we need a c++ tag
+
     var timeout_value=20;//Timeout Value, In Seconds
 
     //details of this are present in DockerSandbox.js
@@ -67,6 +67,8 @@ app.post('/compile',bruteforce.prevent,function(req, res)
             path,
             folder,
             vm_name,
+            //INSTEAD OF VM NAME WE NEED TO HAVE LANGUAGE THAT WILL TAKE ITS place (libraries)
+            //language,
             arr.compilerArray[language][0],
             arr.compilerArray[language][1],
             code,
