@@ -91,6 +91,7 @@ RUN conda install -y \
     mkl \
     theano \
     pygpu \
+    seaborn \
     opencv
 
 # Music tools
