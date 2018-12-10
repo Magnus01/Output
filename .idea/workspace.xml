@@ -48,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="143" column="18" lean-forward="true" selection-start-line="143" selection-start-column="18" selection-end-line="143" selection-end-column="18" />
+            <state relative-caret-position="375">
+              <caret line="142" column="27" lean-forward="true" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -257,12 +257,12 @@
       <workItem from="1541075949053" duration="647000" />
       <workItem from="1541230499889" duration="637000" />
       <workItem from="1542311578909" duration="5222000" />
-      <workItem from="1544452362318" duration="11507000" />
+      <workItem from="1544452362318" duration="11552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40622000" />
+    <option name="totallyTimeSpent" value="40667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -463,8 +463,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Setup/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="143" column="18" lean-forward="true" selection-start-line="143" selection-start-column="18" selection-end-line="143" selection-end-column="18" />
+        <state relative-caret-position="375">
+          <caret line="142" column="27" lean-forward="true" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
         </state>
       </provider>
     </entry>
