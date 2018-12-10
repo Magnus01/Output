@@ -138,8 +138,7 @@ RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/mu
 # Finally...
 #####################################################################
 RUN echo "backend : Agg" > /home/soft/anaconda/lib/python2.7/site-packages/matplotlib/matplotlibrc
-RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
-    fix-permissions /home/$NB_USER
+RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot"
 # Ensure the OS is updated.
 RUN apt-get update
 
