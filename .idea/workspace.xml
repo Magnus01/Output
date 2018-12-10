@@ -57,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/Setup/UpdateDocker.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -228,12 +228,12 @@
       <workItem from="1541075949053" duration="647000" />
       <workItem from="1541230499889" duration="637000" />
       <workItem from="1542311578909" duration="5222000" />
-      <workItem from="1544452362318" duration="2231000" />
+      <workItem from="1544452362318" duration="2564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31346000" />
+    <option name="totallyTimeSpent" value="31679000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -355,7 +355,7 @@
     <entry file="file://$PROJECT_DIR$/Setup/UpdateDocker.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
         </state>
       </provider>
     </entry>
