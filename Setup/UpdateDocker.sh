@@ -1,7 +1,6 @@
 
 echo "Creating Docker Image"
-#docker build . --no-cache -t 'virtual_machine' -f - < Dockerfile
-docker build -t 'virtual_machine' - < Dockerfile
-#docker build --no-cache -t 'virtual_machine' - < Dockerfile
+docker build -t 'python' - < Dockerfile
+docker build -t 'javascript' - < DockerfileReactJS
 echo "Retrieving Installed Docker Images"
 docker images

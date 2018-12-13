@@ -47,12 +47,19 @@ app.post('/compile',function(req, res)
 {
 
     var language = req.body.language;
+
+    var virtualmachineVar = "python"
+    if (language === 4)  {
+        virtualmachineVar = "javascript"
+    }
+    else {language === 0}
+
     var code = req.body.code;
     var stdin = req.body.stdin;
 
     var folder= 'temp/' + random(10); //folder in which the temporary folder will be saved
     var path=__dirname+"/"; //current working path
-    var vm_name='virtual_machine'; // vm_name: The TAG of the Docker VM that we wish to execute
+    var vm_name=virtualmachineVar; //name of virtual machine that we want to execute
     //we need a python Scientifc library tag
     //we need a react js tag
     //we need a virtual reality tag
