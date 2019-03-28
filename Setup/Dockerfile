@@ -118,7 +118,7 @@ RUN pip install xgboost
 RUN pip --no-cache-dir install \
     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.1-cp27-none-linux_x86_64.whl
 
-RUN pip --no-cache-dir install keras==1.4.1
+RUN pip --no-cache-dir install keras==2.1.2
 # TensorBoard
 EXPOSE 6006
 # IPython
