@@ -116,9 +116,9 @@ RUN pip install xgboost
 
 # Install TensorFlow CPU version from central repo. Python 2.7 version
 RUN pip --no-cache-dir install \
-    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.1.0-cp27-none-linux_x86_64.whl
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.1-cp27-none-linux_x86_64.whl
 
-RUN pip --no-cache-dir install keras
+RUN pip --no-cache-dir install keras==1.4.1
 # TensorBoard
 EXPOSE 6006
 # IPython
