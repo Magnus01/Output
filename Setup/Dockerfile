@@ -106,7 +106,9 @@ RUN conda install -c mutirri pyaudio=0.2.7
 
 # Some machine learning tools
 #RUN conda update scikit-learn
-RUN conda update conda
+#RUN conda update conda
+RUN conda update -n base conda -c defaults
+
 
 RUN pip install xgboost
 
