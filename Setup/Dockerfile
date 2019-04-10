@@ -105,7 +105,7 @@ RUN conda install -c conda-forge librosa
 RUN conda install -c mutirri pyaudio=0.2.7
 
 # Some machine learning tools
-RUN conda update scikit-learn
+#RUN conda update scikit-learn
 RUN conda update conda
 
 RUN pip install xgboost
@@ -119,6 +119,7 @@ RUN pip --no-cache-dir install \
     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.1-cp27-none-linux_x86_64.whl
 
 RUN pip --no-cache-dir install keras==2.1.2
+RUN pip --no-cache-dir install scikit-learn
 # TensorBoard
 EXPOSE 6006
 # IPython
