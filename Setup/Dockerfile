@@ -109,7 +109,7 @@ RUN conda install -c mutirri pyaudio=0.2.7
 #RUN conda update conda
 #RUN conda update -n base conda -c defaults
 
-RUN conda update -n base conda -c anaconda
+#RUN conda update -n base conda -c anaconda
 RUN pip install xgboost
 
 #####################################################################
