@@ -49,7 +49,7 @@ RUN apt-get update \
   software-properties-common \
   python-setuptools
 
-# Music libraries
+# # Music libraries
 RUN apt-get install -y libasound-dev \
    portaudio19-dev \
    libportaudio2 \
@@ -102,7 +102,7 @@ RUN conda config --append channels auto
 RUN conda install -c conda-forge ffmpeg
 RUN conda install -c auto pydub=0.9.0
 RUN conda install -c conda-forge librosa
-RUN conda install -c mutirri pyaudio=0.2.7
+# RUN conda install -c mutirri pyaudio=0.2.7
 
 # Some machine learning tools
 #RUN conda update scikit-learn
