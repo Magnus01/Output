@@ -83,5 +83,5 @@ RUN conda install -y -c menpo opencv3=3.1.0 \
 #WORKDIR /home
 #ENTRYPOINT /bin/bash
 # Set the default command to python3
-# CMD ["python3"]
+CMD ["python3"]
 
