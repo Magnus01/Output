@@ -60,10 +60,10 @@ RUN pip install torchnet==0.0.4
 RUN conda install -y requests=2.19.1 \
  && conda clean -ya
 
-# Install Graphviz
-RUN conda install -y graphviz=2.38.0 \
- && conda clean -ya
-RUN pip install graphviz==0.8.4
+# # Install Graphviz
+# RUN conda install -y graphviz=2.38.0 \
+#  && conda clean -ya
+# RUN pip install graphviz==0.8.4
 
 # Install OpenCV3 Python bindings
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
