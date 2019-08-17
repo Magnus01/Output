@@ -12,6 +12,8 @@ RUN /opt/conda/bin/conda install --yes \
     matplotlib \
     pandas \
     scikit-learn \
-    scikit-image 
+    scikit-image \
+    pytorch
 
 RUN pip install torch
+RUN pip install pytorch
