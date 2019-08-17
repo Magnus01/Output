@@ -1,143 +1,38 @@
-##############################################################################################
-# Purpose   : Dockerize Components of a simple data science stack (CPU version).
-# Python    : 2.7
-# Version   : 0.1
-# Author    : Magnus Lysfjord
-##############################################################################################
-#
-# This docker file will setup an environment with only a basic data science stack.
-# This is used for some music related machine learning work. It inlcudes a full python,
-# install, along with the scipy stack and tensor flow (CPU version).
-#
-# See the container maintained by Rob Lyon (robert.lyon@manchester.ac.uk), from which I
-# created this dockerfile:
-#
-# https://github.com/ContinuumIO/docker-images/blob/master/anaconda/Dockerfile
-##############################################################################################
-
-# Use well supported Ubuntu distribution.
-FROM ubuntu:16.04
-
-# Contact me for help!
-MAINTAINER robert.lyon@manchester.ac.uk
-
-# The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT,
-# COPY and ADD instructions that follow it in the Dockerfile. If the WORKDIR doesn’t
-# exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
-WORKDIR /home
-
-#####################################################################
-# Make required directories
-#####################################################################
-
-# Now create some diectories to store files and scripts
-RUN mkdir soft
-RUN mkdir soft/samples
-RUN mkdir soft/samples/libROSA
-RUN mkdir soft/samples/TensorFlow
-RUN mkdir workspace
-
-#####################################################################
-# Install System tools needed
-#####################################################################
-
-RUN apt-get update \
-  && apt-get install -y build-essential \
-  wget \
-  unzip \
-  bzip2 \
-  software-properties-common \
-  python-setuptools
-
-# # Music libraries
-RUN apt-get install -y libasound-dev \
-   portaudio19-dev \
-   libportaudio2 \
-   libportaudiocpp0 \
-   ffmpeg \
-   libav-tools \
-   libavcodec-extra
-
-#####################################################################
-# Install Anaconda (python 2.7 version)
-#####################################################################
-
-# Change to the soft (aka software directory).
-WORKDIR /home/soft
-
-# Now install Anaconda to manage the python environment. This installs numpy, scipy, matplotlib,
-# jupyter etc. Type conda list inside the built docker container, to view the python modules already
-# installed.
-RUN wget https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh
-RUN bash Anaconda2-4.2.0-Linux-x86_64.sh -b -p /home/soft/anaconda
-RUN rm Anaconda2-4.2.0-Linux-x86_64.sh
-ENV PATH /home/soft/anaconda/bin:$PATH
-
-#####################################################################
-# Update Anaconda (extra data science tools)
-#####################################################################
-
-# Python packages from conda. Here libgcc is needed to run XGBoost,
-# whilst GCC is needed for neural network based tools.
-RUN conda install -y \
-    gcc \
-    libgcc \
-    ephem \
-    astropy \
-    pip \
-    pandas \
-    pillow \
-    numba \
-    mkl \
-    theano \
-    pygpu \
-    seaborn \
-    opencv
-
-# Music tools
-RUN conda config --append channels conda-forge
-RUN conda config --append channels mutirri
-RUN conda config --append channels auto
-
-RUN conda install -c conda-forge ffmpeg
-RUN conda install -c auto pydub=0.9.0
-RUN conda install -c conda-forge librosa
-# RUN conda install -c mutirri pyaudio=0.2.7
-
-# Some machine learning tools
-#RUN conda update scikit-learn
-#RUN conda update conda
-#RUN conda update -n base conda -c defaults
-
-#RUN conda update -n base conda -c anaconda
-RUN pip install xgboost
-
-#####################################################################
-# Install CPU version of Tensor Flow
-#####################################################################
-
-# Install TensorFlow CPU version from central repo. Python 2.7 version
-RUN pip --no-cache-dir install \
-    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.1-cp27-none-linux_x86_64.whl
-
-RUN pip --no-cache-dir install keras==2.1.2
-RUN pip --no-cache-dir install scikit-learn
-# TensorBoard
-EXPOSE 6006
-# IPython
-EXPOSE 8888
-
-# Get samples
-WORKDIR /home/workspace/samples/libROSA
-RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/libROSA/sample.m4a
-RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/libROSA/LibROSA_Demo.ipynb
-
-WORKDIR /home/workspace/samples/TensorFlow
-RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/1_hello_tensorflow.ipynb
-RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/2_hello_tensorflow.ipynb
-RUN wget https://raw.githubusercontent.com/scienceguyrob/Docker/master/Images/music/samples/TensorFlow/3_hello_tensorflow.ipynb
+    
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+ARG PYTHON_VERSION=3.6
+RUN apt-get update && apt-get install -y --no-install-recommends \
+         build-essential \
+         cmake \
+         git \
+         curl \
+         ca-certificates \
+         libjpeg-dev \
+         libpng-dev && \
+     rm -rf /var/lib/apt/lists/*
 
 
+RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
+     chmod +x ~/miniconda.sh && \
+     ~/miniconda.sh -b -p /opt/conda && \
+     rm ~/miniconda.sh && \
+     /opt/conda/bin/conda install -y python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing && \
+     /opt/conda/bin/conda install -y -c pytorch magma-cuda100 && \
+     /opt/conda/bin/conda clean -ya
+ENV PATH /opt/conda/bin:$PATH
+# This must be done before pip so that requirements.txt is available
+WORKDIR /opt/pytorch
+COPY . .
+
+RUN git submodule update --init --recursive
+RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
+    CMAKE_PREFIX_PATH="$(dirname $(which conda))/../" \
+    pip install -v .
+
+RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install -v .
+
+WORKDIR /workspace
+RUN chmod -R a+w .
 #####################################################################
 # Finally...
 #####################################################################
