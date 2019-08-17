@@ -39,7 +39,7 @@ RUN chmod -R a+w .
 RUN echo "backend : Agg" > /home/soft/anaconda/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc
 #RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot"
 # Ensure the OS is updated.
-RUN apt-get update
+# RUN apt-get update
 
 # Define the command that will be exectuted when docker runs the container.
 #WORKDIR /home
