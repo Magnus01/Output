@@ -1,42 +1,80 @@
-    
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
-ARG PYTHON_VERSION=3.6
-RUN apt-get update && apt-get install -y --no-install-recommends \
-         build-essential \
-         cmake \
-         git \
-         curl \
-         ca-certificates \
-         libjpeg-dev \
-         libpng-dev && \
-     rm -rf /var/lib/apt/lists/*
+FROM nvidia/cuda:10.0-base-ubuntu16.04
 
+# Install some basic utilities
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    sudo \
+    git \
+    bzip2 \
+    libx11-6 \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
-     chmod +x ~/miniconda.sh && \
-     ~/miniconda.sh -b -p /opt/conda && \
-     rm ~/miniconda.sh && \
-     /opt/conda/bin/conda install -y python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing && \
-     /opt/conda/bin/conda install -y -c pytorch magma-cuda100 && \
-     /opt/conda/bin/conda clean -ya
-ENV PATH /opt/conda/bin:$PATH
-# This must be done before pip so that requirements.txt is available
-WORKDIR /opt/pytorch
-COPY . .
+# Create a working directory
+RUN mkdir /app
+WORKDIR /app
 
-# RUN git submodule update --init --recursives
-RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
-    CMAKE_PREFIX_PATH="$(dirname $(which conda))/../" \
-    pip install -v .
+# Create a non-root user and switch to it
+RUN adduser --disabled-password --gecos '' --shell /bin/bash user \
+ && chown -R user:user /app
+RUN echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-user
+USER user
 
-RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install -v .
+# All users can use /home/user as their home directory
+ENV HOME=/home/user
+RUN chmod 777 /home/user
 
-WORKDIR /workspace
-RUN chmod -R a+w .
+# Install Miniconda
+RUN curl -so ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh \
+ && chmod +x ~/miniconda.sh \
+ && ~/miniconda.sh -b -p ~/miniconda \
+ && rm ~/miniconda.sh
+ENV PATH=/home/user/miniconda/bin:$PATH
+ENV CONDA_AUTO_UPDATE_CONDA=false
+
+# Create a Python 3.6 environment
+RUN /home/user/miniconda/bin/conda install conda-build \
+ && /home/user/miniconda/bin/conda create -y --name py36 python=3.6.5 \
+ && /home/user/miniconda/bin/conda clean -ya
+ENV CONDA_DEFAULT_ENV=py36
+ENV CONDA_PREFIX=/home/user/miniconda/envs/$CONDA_DEFAULT_ENV
+ENV PATH=$CONDA_PREFIX/bin:$PATH
+
+# CUDA 10.0-specific steps
+RUN conda install -y -c pytorch \
+    cuda100=1.0 \
+    magma-cuda100=2.4.0 \
+    "pytorch=1.0.0=py3.6_cuda10.0.130_cudnn7.4.1_1" \
+    torchvision=0.2.1 \
+ && conda clean -ya
+
+# Install HDF5 Python bindings
+RUN conda install -y h5py=2.8.0 \
+ && conda clean -ya
+RUN pip install h5py-cache==1.0
+
+# Install Torchnet, a high-level framework for PyTorch
+RUN pip install torchnet==0.0.4
+
+# Install Requests, a Python library for making HTTP requests
+RUN conda install -y requests=2.19.1 \
+ && conda clean -ya
+
+# Install Graphviz
+RUN conda install -y graphviz=2.38.0 \
+ && conda clean -ya
+RUN pip install graphviz==0.8.4
+
+# Install OpenCV3 Python bindings
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+    libgtk2.0-0 \
+    libcanberra-gtk-module \
+ && sudo rm -rf /var/lib/apt/lists/*
+RUN conda install -y -c menpo opencv3=3.1.0 \
+ && conda clean -ya
+
 #####################################################################
-# Finally...
-#####################################################################
-RUN echo "backend : Agg" > /home/soft/anaconda/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc
+# RUN echo "backend : Agg" > /home/soft/anaconda/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc
 #RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot"
 # Ensure the OS is updated.
 # RUN apt-get update
@@ -44,3 +82,6 @@ RUN echo "backend : Agg" > /home/soft/anaconda/lib/python2.7/site-packages/matpl
 # Define the command that will be exectuted when docker runs the container.
 #WORKDIR /home
 #ENTRYPOINT /bin/bash
+# Set the default command to python3
+# CMD ["python3"]
+
