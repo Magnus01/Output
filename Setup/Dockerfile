@@ -16,4 +16,3 @@ RUN /opt/conda/bin/conda install --yes \
     pytorch
 
 RUN pip install torch
-RUN pip install pytorch
