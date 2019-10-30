@@ -7,7 +7,7 @@
     "exports": "*",
     "express": "4.*",
     "express-brute": "*",
-    "jquery": "^3.3.1"
+    "jquery": "^3.4.0"
   },
   "author": "Osman Ali",
   "license": "MIT"
